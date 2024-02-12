@@ -1,0 +1,177 @@
+/* Import Google font - Poppins */
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"); */
+
+/* Reset default styles */
+
+/* Keyframes for slide animation */
+@keyframes slide {
+  0% {
+    transform: translateX(40%);
+  }
+  100% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(calc(-100%)); /* Adjust value based on card width */
+  }
+}
+.image-list__item {
+  position: relative;
+  display: inline-block; /* Optional, adjust as needed */
+}
+
+/* Wrapper styles */
+.wrapper {
+  max-width: 730px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon styles */
+.wrapper i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+  z-index: 2;
+}
+.wrapper i:active {
+  transform: translateY(-50%) scale(0.85);
+}
+.wrapper i:first-child {
+  left: -25px;
+}
+.wrapper i:last-child {
+  right: -25px;
+}
+
+/* Carousel styles */
+.wrapper .carousel1 {
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: fit-content;
+  overflow-x: auto;
+  /* scroll-snap-type: x mandatory; */
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  animation: slide 10s linear infinite;
+}
+
+/* Carousel content styles */
+.wrapper .carousel-content {
+  display: flex;
+  width: max-content;
+  animation: slide 10s linear infinite;
+  overflow: hidden;
+}
+
+/* Hide scrollbar */
+.carousel1::-webkit-scrollbar {
+  display: none;
+}
+
+/* No transition during drag */
+.carousel1.no-transition {
+  scroll-behavior: auto;
+}
+
+/* Dragging styles */
+.carousel1.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.carousel1.dragging .card1 {
+  cursor: grab;
+  user-select: none;
+}
+
+/* Card and image styles */
+.carousel1 :where(.card1, .img1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel1 .card1 {
+  scroll-snap-align: start;
+  width: 170px;
+  height: 200px;
+  background: #303030;
+  cursor: pointer;
+  padding-bottom: 15px;
+  flex-direction: column;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Image inside card */
+.card1 .img1 img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Show name on hover */
+.name1 {
+  opacity: 0;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  font-size: 13px;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  background-color: red;
+  color: white;
+  padding: 7px;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.card1:hover .name1 {
+  opacity: 1;
+}
+
+/* Image zoom on hover */
+.carousel1 .card1 .img1 img {
+  transition: transform 0.3s ease;
+}
+
+.carousel1 .card1:hover .img1 img {
+  transform: scale(1.1);
+}
+
+/* Media queries */
+@media screen and (max-width: 1000px) {
+  .wrapper .carousel1 {
+    grid-auto-columns: calc((100% / 4) - 9px);
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .wrapper .carousel1 {
+    grid-auto-columns: calc((100% / 3) - 10px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper .carousel1 {
+    grid-auto-columns: calc((100% / 2) - 4px);
+    grid-auto-columns: 100%;
+  }
+}

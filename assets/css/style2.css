@@ -1,0 +1,36 @@
+.image-list {
+  display: flex;
+  justify-content: center;
+}
+
+.image-list__container {
+  display: flex;
+  gap: 100px;
+  max-width: 80%;
+  overflow-x: auto;
+  flex-direction: row;
+  margin-bottom: 50px;
+}
+
+.image-list__item {
+  list-style: none;
+}
+
+.image-list__link {
+  text-decoration: none;
+}
+
+.image-list__figure {
+  margin: 0;
+}
+
+.image-list__img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1000px) {
+  .image-list__container {
+    flex-direction: column;
+  }
+}
